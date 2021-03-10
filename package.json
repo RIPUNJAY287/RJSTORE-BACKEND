@@ -1,0 +1,36 @@
+{
+  "name": "dude-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "admin.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.5.0",
+    "http-errors": "^1.7.2",
+    "morgan": "^1.10.0",
+    "nanoid": "^3.1.20",
+    "razorpay": "^2.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node ./server/server",
+    "dev": "nodemon ./server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RIPUNJAY287/dude-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RIPUNJAY287/dude-backend/issues"
+  },
+  "homepage": "https://github.com/RIPUNJAY287/dude-backend#readme"
+}
