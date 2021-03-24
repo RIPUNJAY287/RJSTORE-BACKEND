@@ -10,7 +10,8 @@ require("dotenv").config();
 var merchandise = require("./routes/merchandise");
 var user = require("./routes/user");
 var payment = require("./routes/payment");
-
+var order = require("./routes/order");
+var promocode = require("./routes/promocode");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,7 +20,8 @@ app.use(cors());
 app.use("/api/merchandise", merchandise);
 app.use("/api/user", user);
 app.use("/api/payment", payment);
-
+app.use("/api/order", order);
+app.use("/api/promocode", promocode);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(httpError(404));

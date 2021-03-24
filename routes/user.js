@@ -125,4 +125,40 @@ router.post("/address/edit", auth, (req, res) => {
   });
 });
 
+router.post("/add-orderId", (req, res) => {
+  console.log(req.body);
+  var userorderRef = db.collection("users").doc(req.body.uid);
+  userorderRef
+    .update({
+      orders: admin.firestore.FieldValue.arrayUnion(req.body.orderId),
+    })
+    .then(() => {
+      res.status(200).json({ message: "Success" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Server Error" });
+    });
+});
+
+router.post("/cart/delete", auth, (req, res) => {
+  console.log(req.body);
+  var userCartRef = db
+    .collection("users")
+    .doc(req.body.uid)
+    .collection("cartList");
+  //Check in Cart
+  userCartRef
+    .get()
+    .then((snapshot) => {
+      cartData = snapshot.docs.map(async (doc) => {
+        await doc.ref.delete();
+      });
+      res.status(200).json({ message: "success" });
+    })
+    .catch(() => {
+      res.status(500).json({ error: "Server Error" });
+    });
+});
+
 module.exports = router;

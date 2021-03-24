@@ -175,4 +175,27 @@ router.post("/cart/remove", auth, (req, res) => {
   });
 });
 
+router.post("/cart/delete", auth, (req, res) => {
+  var userCartRef = db
+    .collection("users")
+    .doc(req.body.uid)
+    .collection("cartList");
+  userCartRef.get().then((product) => {
+    if (!product.exists) {
+      res.status(200).json({
+        message: "Address doesn't Exist",
+      });
+    } else {
+      userCartRef.delete().then(() => {
+        res
+          .status(200)
+          .json({ message: "Success" })
+          .catch(() => {
+            res.status(500).json({ message: "Server Error" });
+          });
+      });
+    }
+  });
+});
+
 module.exports = router;
