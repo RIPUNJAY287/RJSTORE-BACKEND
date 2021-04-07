@@ -3,7 +3,7 @@ var router = express.Router();
 const auth = require("../middlewares/auth");
 const db = require("../admin").db;
 
-router.post("/getAll", (req, res) => {
+router.get("/getAll", (req, res) => {
   const promoRef = db.collection("promocodes");
   promoRef
     .get()
@@ -13,7 +13,6 @@ router.post("/getAll", (req, res) => {
         return data;
       });
 
-      console.log(promoData);
       res.status(200).json(promoData);
     })
     .catch((err) => {
@@ -21,6 +20,31 @@ router.post("/getAll", (req, res) => {
       res.status(500).json({
         error: true,
       });
+    });
+});
+router.post("/add", (req, res) => {
+  var userpromocodeRef = db.collection("promocodes").doc(req.body.code);
+  userpromocodeRef
+    .set(req.body)
+    .then((snapshot) => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Server Error" });
+    });
+});
+router.post("/delete", (req, res) => {
+  var userpromocodeRef = db.collection("promocodes").doc(req.body.code);
+
+  userpromocodeRef
+    .delete()
+    .then((snapshot) => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Server Error" });
     });
 });
 

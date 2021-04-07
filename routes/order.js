@@ -49,4 +49,23 @@ router.post("/item", async (req, res) => {
       res.status(500).json({ error: "server error" });
     });
 });
+router.get("/get", (req, res) => {
+  const promoRef = db.collection("orders");
+  promoRef
+    .get()
+    .then((snapshot) => {
+      var orderData = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return data;
+      });
+      console.log(orderData);
+      res.status(200).json(orderData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+      });
+    });
+});
 module.exports = router;

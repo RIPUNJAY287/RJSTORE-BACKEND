@@ -12,6 +12,7 @@ var user = require("./routes/user");
 var payment = require("./routes/payment");
 var order = require("./routes/order");
 var promocode = require("./routes/promocode");
+var pincode = require("./routes/pincode");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,6 +23,7 @@ app.use("/api/user", user);
 app.use("/api/payment", payment);
 app.use("/api/order", order);
 app.use("/api/promocode", promocode);
+app.use("/api/pincode", pincode);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(httpError(404));
