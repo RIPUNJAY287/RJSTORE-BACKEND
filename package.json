@@ -2,7 +2,7 @@
   "name": "dude-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "admin.js",
+  "main": "index.js",
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
