@@ -54,7 +54,7 @@ router.post("/razorpay", auth, async (req, res) => {
         message: response.id,
         id: response.id,
         currency: response.currency,
-        amount: response.amount,
+        amount: response.amount / 100,
       });
     } else {
       res.status(400).json({
