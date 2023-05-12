@@ -20,8 +20,8 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "node ./server/server",
-    "dev": "nodemon ./server/server",
+    "start": "node ./api/index",
+    "dev": "nodemon ./api/index",
     "vercel-build": "echo hello"
   },
   "repository": {
