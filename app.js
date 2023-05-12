@@ -13,6 +13,7 @@ var payment = require("./routes/payment");
 var order = require("./routes/order");
 var promocode = require("./routes/promocode");
 var pincode = require("./routes/pincode");
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
