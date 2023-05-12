@@ -21,7 +21,8 @@
   },
   "scripts": {
     "start": "node ./server/server",
-    "dev": "nodemon ./server/server"
+    "dev": "nodemon ./server/server",
+    "vercel-build": "echo hello"
   },
   "repository": {
     "type": "git",
